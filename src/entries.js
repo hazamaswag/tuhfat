@@ -1,14 +1,14 @@
 export const entries = [
   {
     id: 1,
+    unvoweled_arab: "نصر",
+    voweled_arab: "نَصَرَ",
     eng: "to help",
-    arab: "نصر",
-    harakat: "نَصَرَ",
   },
   {
     id: 2,
-    eng: "it's just a test of the principia !",
-    arab: "نصر",
-    harakat: "نَصَرَ",
+    unvoweled_arab: "ضرب",
+    voweled_arab: "ضَرَبَ",
+    eng: "to hit",
   },
 ];

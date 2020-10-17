@@ -1,3 +1,18 @@
+.dark {
+  background-color: #100e17;
+  color: rgb(59, 193, 197);
+  height: 100vh;
+  min-height: "100vh";
+}
+@media screen and (prefers-color-scheme: dark) {
+  .dark {
+    background-color: white;
+    color: rgb(59, 197, 59);
+    /* background-color: black;
+    color: white; */
+  }
+}
+
 .App {
   text-align: center;
 }

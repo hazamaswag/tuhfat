@@ -1,0 +1,28 @@
+.bismillah {
+  text-align: center;
+  /* overflow: hidden; */
+  /* display: inline-block; */
+  color: white;
+  margin: auto;
+  width: 55%;
+  border: 3px solid rgba(3, 217, 255, 0.473);
+  /* padding: 10px; */
+}
+
+.btn_trans {
+  margin: 1% 2% 1% 23%;
+  display: inline-block;
+  width: 9%;
+}
+.btn_vowel {
+  margin-bottom: 0%;
+  display: inline-block;
+  width: 9%;
+}
+
+/* .test {
+  float: left;
+} */
+/* .btn {
+  text-align: center;
+} */

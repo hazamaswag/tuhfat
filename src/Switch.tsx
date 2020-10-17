@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 
 // const english = /^[A-Za-z0-9]*$/;
+// const english = /[A-Za-z0-9 _.,!"'/$]*/;
 // eslint-disable-next-line
 const english = /[^\u0000-\u007F]/;
-// const english = /[A-Za-z0-9 _.,!"'/$]*/;
 
 const isEng = (txt: string) => {
   const phrase_list = txt.split(" ");
@@ -13,49 +13,54 @@ const isEng = (txt: string) => {
 
 interface IEntry {
   id?: number;
+  unvoweled_arab: string;
+  voweled_arab: string;
   eng: string;
-  arab: string;
-  harakat: string;
 }
 
-// Change default to without harakat, refactor code
-
-const Switch = ({ eng, arab, harakat }: IEntry) => {
-  const [text, setText] = React.useState(eng);
-  const [arabBut, setArabBut] = React.useState("Arabic");
-  const [harabut, setHaraBut] = React.useState("Remove harakat");
+const Switch = ({ unvoweled_arab, voweled_arab, eng }: IEntry) => {
+  const [text, setText] = useState(unvoweled_arab);
+  const [interpretationBut, setInterpretationBut] = useState(
+    "Hamza's Interpretation"
+  );
+  const [vowelBut, setVowelBut] = useState("Add Vowels");
 
   const lang = (txt: string) => {
     if (isEng(txt)) {
-      setText(harakat);
-      setArabBut("English");
+      setText(unvoweled_arab);
+      setInterpretationBut("Hamza's Interpretation");
     } else {
       setText(eng);
-      setArabBut("Arabic");
-      setHaraBut("Remove harakat");
+      setInterpretationBut("Arabic");
+      setVowelBut("Add Vowels");
     }
   };
 
   const lang2 = (txt: string) => {
     if (isEng(txt)) {
-    } else if (txt === harakat) {
-      setText(arab);
-      setHaraBut("Add harakat");
+    } else if (txt === voweled_arab) {
+      setText(unvoweled_arab);
+      setVowelBut("Add Vowels");
     } else {
-      setText(harakat);
-      setHaraBut("Remove harakat");
+      setText(voweled_arab);
+      setVowelBut("Remove Vowels");
     }
   };
 
   return (
     <>
-      <h1>{text}</h1>
-      <button type="button" onClick={() => lang(text)}>
-        {arabBut}
+      <button className="btn_trans" type="button" onClick={() => lang(text)}>
+        {interpretationBut}
       </button>
-      <button disabled={isEng(text)} type="button" onClick={() => lang2(text)}>
-        {harabut}
+      <button
+        className="btn_vowel"
+        disabled={isEng(text)}
+        type="button"
+        onClick={() => lang2(text)}
+      >
+        {vowelBut}
       </button>
+      <h1 className="bismillah">{text}</h1>
     </>
   );
 };
